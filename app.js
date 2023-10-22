@@ -7,8 +7,9 @@ const mongoose = require('mongoose')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const authRouter = require('./routes/auth')
-var productRouter = require('./routes/products')
+var productRouter = require('./routes/products');
+var categoryRouter = require('./routes/category');
+const authRouter = require('./routes/auth');
 
 //Informacion base de datos
 const dataBaseURL = "mongodb+srv://angelaavalos:Love241001@cluster0.wymsswx.mongodb.net/"
@@ -32,9 +33,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/auth',authRouter)
 app.use('/product', productRouter);
-
+app.use('/category', categoryRouter);
+app.use('/auth',authRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
