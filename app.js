@@ -9,7 +9,9 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productRouter = require('./routes/products');
 var categoryRouter = require('./routes/category');
-var orderRouter = require('./routes/order')
+var orderRouter = require('./routes/order');
+var favoriteRoutes = require('./routes/favorite');
+
 const authRouter = require('./routes/auth');
 
 //Informacion base de datos
@@ -37,6 +39,7 @@ app.use('/users', usersRouter);
 app.use('/product', productRouter);
 app.use('/category', categoryRouter);
 app.use('/order', orderRouter)
+app.use('/favorite',favoriteRoutes)
 app.use('/auth',authRouter);
 
 // catch 404 and forward to error handler
