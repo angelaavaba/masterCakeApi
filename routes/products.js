@@ -1,9 +1,20 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+const {
+  createProduct,
+  getProducts,
+  updateProduct,
+  getProductsByCategory
+} = require('../controllers/product.controller');
+
+router.post('/', createProduct);
+
+router.get('/', getProducts);
+
+router.get('/category/:category', getProductsByCategory);
+
+router.put('/:id', updateProduct);
+
 
 module.exports = router;

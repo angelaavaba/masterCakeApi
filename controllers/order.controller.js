@@ -54,3 +54,17 @@ exports.deleteOrder = async (req, res) => {
         res.status(500).send(err);
     }
 };
+
+exports.getOrdersByUserId = async (req, res) => {
+    try {
+        const userId = req.params.userId;
+        const orders = await Order.find({ UserId: userId });
+        if (!orders || orders.length === 0) {
+            return res.status(404).send({ message: 'No orders found for this user.' });
+        }
+        res.status(200).send(orders);
+    } catch (err) {
+        res.status(500).send(err);
+    }
+};
+
