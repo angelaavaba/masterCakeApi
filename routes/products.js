@@ -2,20 +2,19 @@ var express = require('express');
 var router = express.Router();
 
 const {
-    createProduct,
-    getAllProducts,
-    getProductById,
-    updateProduct,
-    deleteProduct
+  createProduct,
+  getProducts,
+  updateProduct,
+  getProductsByCategory
 } = require('../controllers/product.controller');
 
-// Rutas de productos
 router.post('/', createProduct);
-router.get('/', getAllProducts);
-router.get('/:id', getProductById);
+
+router.get('/', getProducts);
+
+router.get('/category/:category', getProductsByCategory);
+
 router.put('/:id', updateProduct);
-router.delete('/:id', deleteProduct);
-  
+
+
 module.exports = router;
-
-
