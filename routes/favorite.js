@@ -8,7 +8,7 @@ const {
 
 router.post('/', addFavorite);
 router.get('/user/:userId', getUserFavorites);
-router.delete('/', removeFavorite); // Aquí esperamos que UserId y ProductId sean enviados en el cuerpo de la solicitud
+router.delete('/:userId/:productId', removeFavorite); // Aquí esperamos que UserId y ProductId sean enviados en el cuerpo de la solicitud
 
 module.exports = router;
 
