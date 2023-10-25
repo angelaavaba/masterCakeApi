@@ -9,12 +9,14 @@ const {
     getOrdersByUserId
 } = require('../controllers/order.controller');
 
-router.post('/', createOrder);
-router.get('/', getAllOrders);
-router.get('/:id', getOrderById);
-router.put('/:id', updateOrder);
-router.delete('/:id', deleteOrder);
-router.get('/user/:userId', getOrdersByUserId);
+const{verifyjwt} = require('../controllers/auth.contoller');
+
+router.post('/',verifyjwt, createOrder);
+router.get('/',verifyjwt, getAllOrders);
+router.get('/:id',verifyjwt, getOrderById);
+router.put('/:id', verifyjwt,updateOrder);
+router.delete('/:id', verifyjwt,deleteOrder);
+router.get('/user/:userId',verifyjwt, getOrdersByUserId);
 
 
 
