@@ -9,12 +9,16 @@ const {
     deleteCategory
 } = require('../controllers/category.controller');
 
+const{verifyjwt} = require('../controllers/auth.contoller');
+
+
+
 // Rutas para los productos
-router.post('/', createCategory);
-router.get('/', getAllCategories);
-router.get('/:id', getCategoryById);
-router.put('/:id', updateCategory);
-router.delete('/:id', deleteCategory);
+router.post('/', verifyjwt, createCategory);
+router.get('/',verifyjwt, getAllCategories);
+router.get('/:id',verifyjwt, getCategoryById);
+router.put('/:id',verifyjwt, updateCategory);
+router.delete('/:id',verifyjwt, deleteCategory);
 
 module.exports = router;
 

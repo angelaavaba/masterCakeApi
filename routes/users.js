@@ -9,12 +9,15 @@ const{
   loginUsuario
 }= require('../controllers/user.controller.js')
 
+const{verifyjwt} = require('../controllers/auth.contoller');
+
+
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/',verifyjwt, function(req, res, next) {
   res.send('respond with a resource');
 });
 
-router.post('/registrar', registrarUsuario);
-router.post('/login',loginUsuario)
+router.post('/registrar', verifyjwt,registrarUsuario);
+router.post('/login',verifyjwt,loginUsuario)
 
 module.exports = router;

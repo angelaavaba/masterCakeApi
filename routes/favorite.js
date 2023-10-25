@@ -6,9 +6,11 @@ const {
     removeFavorite
 } = require('../controllers/favorite.controller');
 
-router.post('/', addFavorite);
-router.get('/user/:userId', getUserFavorites);
-router.delete('/:userId/:productId', removeFavorite); // Aquí esperamos que UserId y ProductId sean enviados en el cuerpo de la solicitud
+const{verifyjwt} = require('../controllers/auth.contoller');
+
+router.post('/',verifyjwt, addFavorite);
+router.get('/user/:userId',verifyjwt, getUserFavorites);
+router.delete('/:userId/:productId',verifyjwt, removeFavorite); // Aquí esperamos que UserId y ProductId sean enviados en el cuerpo de la solicitud
 
 module.exports = router;
 
