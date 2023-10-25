@@ -8,13 +8,17 @@ const {
   getProductsByCategory
 } = require('../controllers/product.controller');
 
-router.post('/', createProduct);
+const{verifyjwt} = require('../controllers/auth.contoller');
 
-router.get('/', getProducts);
 
-router.get('/category/:category', getProductsByCategory);
+router.post('/',verifyjwt, createProduct);
 
-router.put('/:id', updateProduct);
+router.get('/',verifyjwt, getProducts);
+
+router.get('/category/:category',verifyjwt, getProductsByCategory);
+
+router.put('/:id',verifyjwt, updateProduct);
+
 
 
 module.exports = router;
