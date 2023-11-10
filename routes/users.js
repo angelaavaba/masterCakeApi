@@ -21,3 +21,4 @@ router.post('/registrar',registrarUsuario);
 router.post('/login',loginUsuario)
 
 module.exports = router;
+
