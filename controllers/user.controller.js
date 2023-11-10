@@ -31,10 +31,24 @@ async function loginUsuario(req,res){
         const user = await User.findOne({username: nombreUsuario});
         
         if(user.password == pass){
-            res.json({
-                username: user.username,
-                password: user.password
-            });
+
+            try{
+                const nuevoToken = await jwt.sign(
+                    {username: nombreUsuario},
+                    config.auth.secretKey,
+                    {algorithm:'HS256'}
+                    );
+        
+                    res.status(200).json({
+                        message: "Login exitoso",
+                        jwt: nuevoToken
+                    })
+         
+            }catch(err){
+                res.status(500).json({
+                    message: "Error de autenticacion"
+                })
+            }
         
         }else{
             res.status(401).json('Contraseña incorrecta')
