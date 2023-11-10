@@ -17,6 +17,7 @@ const authRouter = require('./routes/auth');
 //Informacion base de datos
 const dataBaseURL = "mongodb+srv://angelaavalos:Love241001@cluster0.wymsswx.mongodb.net/"
 
+
 mongoose.connect(dataBaseURL);
 mongoose.connection.on('open',function(){
   console.log("Connection Ok")
