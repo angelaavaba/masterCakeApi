@@ -1,5 +1,9 @@
 const { router } = require("../app");
 const { route } = require("../routes");
+const jwt = require('jsonwebtoken');
+const {config}= require('../config/config');
+
+
 
 const User = require("../models/user.model").User;
 
@@ -45,7 +49,9 @@ async function loginUsuario(req,res){
                     })
          
             }catch(err){
+                console.log(err)
                 res.status(500).json({
+                    
                     message: "Error de autenticacion"
                 })
             }
