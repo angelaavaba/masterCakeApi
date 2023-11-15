@@ -3,6 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+
+
+
+
 const mongoose = require('mongoose')
 var cors = require('cors')
 
@@ -17,6 +21,7 @@ const authRouter = require('./routes/auth');
 
 //Informacion base de datos
 const dataBaseURL = "mongodb+srv://angelaavalos:Love241001@cluster0.wymsswx.mongodb.net/"
+
 
 mongoose.connect(dataBaseURL);
 mongoose.connection.on('open',function(){
@@ -44,6 +49,8 @@ app.use('/category', categoryRouter);
 app.use('/order', orderRouter)
 app.use('/favorite',favoriteRoutes)
 app.use('/auth',authRouter);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
