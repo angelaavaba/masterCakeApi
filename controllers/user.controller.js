@@ -69,7 +69,10 @@ async function loginUsuario(req,res){
             }
         
         }else{
-            res.status(401).json('Contraseña incorrecta')
+            res.status(401).json({
+                    
+                message: "Contraseña Incorrecta"
+            })
         }
 
 
