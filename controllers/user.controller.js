@@ -45,7 +45,7 @@ async function loginUsuario(req,res){
         const user = await User.findOne({username: nombreUsuario});
         console.log(user);
         
-        if(user.password == pass){
+        if(user && user.password == pass){
             console.log("entro")
 
             try{
