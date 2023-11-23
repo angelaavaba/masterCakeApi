@@ -15,12 +15,12 @@ const userSchema = new mongoose.Schema({
     },
     domicilio: {
         type: String,
-        required: false
+        required: true
     },
     sexo: {
         type: String,
         enum: ['Masculino', 'Femenino', 'Otro'], 
-        required: false
+        required: true
     }
 });
 
