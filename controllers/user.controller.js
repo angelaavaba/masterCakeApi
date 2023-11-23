@@ -32,7 +32,7 @@ async function registrarUsuario(req, res) {
         console.error(err);
         res.status(500).json({ 
            message: "Error al registarse",
-           obj: ""
+           obj: {}
     
         });
     }
