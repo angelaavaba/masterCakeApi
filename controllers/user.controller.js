@@ -24,12 +24,17 @@ async function registrarUsuario(req, res) {
         }).save();
 
         res.json({
+            message: "Registro exitoso",
             obj: newUser
         });
 
     } catch (err) {
         console.error(err);
-        res.status(500).json({ error: 'Error al registrar usuario' });
+        res.status(500).json({ 
+           message: "Error al registarse",
+           obj: {}
+    
+        });
     }
 }
 
@@ -71,7 +76,8 @@ async function loginUsuario(req,res){
         }else{
             res.status(401).json({
                     
-                message: "Contraseña Incorrecta"
+                message: "Contraseña Incorrecta",
+                jwt: ""
             })
         }
 
