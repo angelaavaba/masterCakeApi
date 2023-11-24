@@ -4,7 +4,7 @@ exports.createCategory = async (req, res) => {
     const newCategory = new Category(req.body);
     try {
         await newCategory.save();
-        res.status(201).send(newCategory);
+        res.status(200).json({cat:newCategory});
     } catch (err) {
         console.log(err)
         res.status(400).send(err);
