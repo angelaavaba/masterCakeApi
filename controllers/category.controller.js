@@ -6,6 +6,7 @@ exports.createCategory = async (req, res) => {
         await newCategory.save();
         res.status(201).send(newCategory);
     } catch (err) {
+        console.log(err)
         res.status(400).send(err);
     }
 };
