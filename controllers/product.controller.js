@@ -1,14 +1,15 @@
 const Product = require('../models/product.model');
 
 exports.createProduct = async (req, res) => {
-    const { product, category, price, description } = req.body;
+    const { product, category, price, description, image } = req.body;
 
     try {
         const newProduct = new Product({
             product,
             category,
             price,
-            description
+            description,
+            image
         });
 
         await newProduct.save();
@@ -40,7 +41,7 @@ exports.getProductsByCategory = async (req, res) => {
 };
 
 exports.updateProduct = async (req, res) => {
-    const { product, category, price, description } = req.body;
+    const { product, category, price, description, image } = req.body;
     
     try {
         let updatedProduct = await Product.findById(req.params.id);
@@ -53,6 +54,7 @@ exports.updateProduct = async (req, res) => {
         updatedProduct.category = category;
         updatedProduct.price = price;
         updatedProduct.description = description;
+        updatedProduct.image = image;
 
         updatedProduct = await Product.findByIdAndUpdate(req.params.id, updatedProduct, { new: true });
         res.json(updatedProduct);

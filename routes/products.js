@@ -5,7 +5,8 @@ const {
   createProduct,
   getProducts,
   updateProduct,
-  getProductsByCategory
+  getProductsByCategory,
+  deleteProduct
 } = require('../controllers/product.controller');
 
 const{verifyjwt} = require('../controllers/auth.contoller');
@@ -19,6 +20,6 @@ router.get('/category/:category',verifyjwt, getProductsByCategory);
 
 router.put('/:id',verifyjwt, updateProduct);
 
-
+router.delete('/:id',verifyjwt, deleteProduct)
 
 module.exports = router;
