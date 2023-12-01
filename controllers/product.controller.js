@@ -22,7 +22,7 @@ exports.createProduct = async (req, res) => {
 
 exports.getProducts = async (req, res) => {
     try {
-        const products = await Product.find();
+        const products = await Product.find().populate("category");
         res.json(products);
     } catch (error) {
         console.error(error);
