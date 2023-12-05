@@ -32,13 +32,21 @@ exports.getProducts = async (req, res) => {
 
 exports.getProductsByCategory = async (req, res) => {
     try {
-        const products = await Product.find({ category: req.params.category });
+        // Assuming req.params.category is the ObjectId of the category
+        const categoryId = req.params.category;
+        const products = await Product.find({ category: categoryId }).populate("category");
+
+        if (!products.length) {
+            return res.status(404).json({ msg: 'No products found for this category.' });
+        }
+
         res.json(products);
     } catch (error) {
         console.error(error);
         res.status(500).send('Hubo un error al obtener los productos por categoría.');
     }
 };
+
 
 exports.updateProduct = async (req, res) => {
     const { product, category, price, description, image } = req.body;
