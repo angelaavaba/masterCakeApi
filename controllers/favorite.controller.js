@@ -6,9 +6,10 @@ exports.addFavorite = async (req, res) => {
         await favorite.save();
         res.status(201).send(favorite);
     } catch (err) {
-        res.status(400).send(err);
+        res.status(400).send({ error: err.message });
     }
 };
+
 
 exports.getUserFavorites = async (req, res) => {
     try {
@@ -21,12 +22,13 @@ exports.getUserFavorites = async (req, res) => {
 
 exports.removeFavorite = async (req, res) => {
     try {
-        const favorite = await Favorite.findOneAndDelete({ UserId: req.body.UserId, ProductId: req.body.ProductId });
+        const { userId, productId } = req.params;
+        const favorite = await Favorite.findOneAndDelete({ UserId: userId, ProductId: productId });
         if (!favorite) {
-            return res.status(404).send();
+            return res.status(404).send({ error: 'Favorite not found' });
         }
         res.status(200).send(favorite);
     } catch (err) {
-        res.status(500).send(err);
+        res.status(500).send({ error: err.message });
     }
 };
