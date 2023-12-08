@@ -4,11 +4,13 @@ const categorySchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        index:true
     },
     description: {
         type: String,
-        required: false
+        required: false,
+        index:true
     },
     image: {
         type: String,
@@ -19,3 +21,4 @@ const categorySchema = new mongoose.Schema({
 const Category = mongoose.model('Category', categorySchema);
 
 module.exports = Category;
+

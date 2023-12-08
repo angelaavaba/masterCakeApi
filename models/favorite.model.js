@@ -4,12 +4,15 @@ const FavoriteSchema = new mongoose.Schema({
     UserId: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',
-        required: true
+        required: true,
+        index:true
+        
     },
     ProductId: {
         type: mongoose.Schema.ObjectId,
         ref: 'Product',
-        required: true
+        required: true,
+        index:true
     }
 });
 
